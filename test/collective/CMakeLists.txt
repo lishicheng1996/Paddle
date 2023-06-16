@@ -79,7 +79,7 @@ if((WITH_GPU OR WITH_ROCM) AND (LINUX))
   py_test_modules(
     test_collective_alltoall_api MODULES test_collective_alltoall_api ENVS
     "http_proxy=;https_proxy=;PYTHONPATH=..:${PADDLE_BINARY_DIR}/python")
-  if(${CUDA_ARCH_NAME} STREQUAL "Ampere")
+  if((NOT WITH_ROCM) AND (${CUDA_ARCH_NAME} STREQUAL "Ampere"))
     set_tests_properties(test_collective_alltoall_api
                          PROPERTIES TIMEOUT "160" LABELS "RUN_TYPE=DIST")
   else()
