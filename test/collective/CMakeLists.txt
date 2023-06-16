@@ -244,7 +244,10 @@ if((WITH_GPU OR WITH_ROCM) AND (LINUX))
     test_collective_reduce_scatter_api MODULES
     test_collective_reduce_scatter_api ENVS
     "http_proxy=;https_proxy=;PYTHONPATH=..:${PADDLE_BINARY_DIR}/python")
-  if(${CUDA_ARCH_NAME} STREQUAL "Ampere")
+  if(WITH_ROCM)
+    set_tests_properties(test_collective_reduce_scatter_api
+                         PROPERTIES TIMEOUT "250" LABELS "RUN_TYPE=DIST")
+  elseif(${CUDA_ARCH_NAME} STREQUAL "Ampere")
     set_tests_properties(test_collective_reduce_scatter_api
                          PROPERTIES TIMEOUT "360" LABELS "RUN_TYPE=DIST")
   else()
