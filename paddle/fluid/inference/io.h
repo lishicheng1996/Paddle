@@ -32,6 +32,7 @@ void LoadPersistables(framework::Executor* executor,
                       framework::Scope* scope,
                       const framework::ProgramDesc& main_program,
                       const std::string& dirname,
+                      const std::string& param_filename,
                       bool model_from_memory = false,
                       const std::string& parse = "");
 
