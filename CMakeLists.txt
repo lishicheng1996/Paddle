@@ -718,7 +718,7 @@ if(WITH_FASTDEPLOY_AUTH)
   find_library(
       FASTDEPLOY_AUTH_LIB
       NAMES fastdeploy_auth
-      PATHS ${FASTDEPLOY_MODEL_TOOL_ROOT}/auth)
+      ${FASTDEPLOY_MODEL_TOOL_ROOT}/lib/libfastdeploy_auth.so)
 endif()
 
 if(ON_INFER)
