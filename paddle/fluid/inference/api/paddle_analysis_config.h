@@ -866,7 +866,7 @@ struct PD_INFER_DECL AnalysisConfig {
 
 #ifdef PADDLE_WITH_FASTDEPLOY_AUTH
   void SetFDProductName(std::string name = "safety-query-safety") {fastdeploy_ep_product_name_ = name;}
-  std::string get_fd_product_name() {return fastdeploy_ep_product_name_};
+  std::string get_fd_product_name() {return fastdeploy_ep_product_name_; }
 #endif
 
   void EnableDlnne(
