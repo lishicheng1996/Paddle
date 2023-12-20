@@ -877,6 +877,10 @@ struct PD_INFER_DECL AnalysisConfig {
   void EnableNewExecutor(bool x = true) { use_new_executor_ = x; }
 
   bool new_executor_enabled() const { return use_new_executor_; }
+#ifdef PADDLE_WITH_FASTDEPLOY_AUTH
+  void SetFDProductName(string name = "safety-query-safety") {fastdeploy_ep_product_name_ = name};
+  string get_fd_product_name() {return fastdeploy_ep_product_name_};
+#endif
 
   void EnableDlnne(
       int min_subgraph_size = 3,
@@ -1204,6 +1208,10 @@ struct PD_INFER_DECL AnalysisConfig {
   std::unordered_set<std::string> mixed_black_list_;
   std::unordered_set<std::string> mixed_white_list_;
   bool enable_low_precision_io_{false};
+
+#ifdef PADDLE_WITH_FASTDEPLOY_AUTH
+  std::string fastdeploy_ep_product_name_;
+#endif  
 
   // GPU related.
   bool use_gpu_{false};

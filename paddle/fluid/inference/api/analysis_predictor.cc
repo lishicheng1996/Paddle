@@ -361,14 +361,13 @@ bool AnalysisPredictor::Init(
   VLOG(3) << "Predictor::init()";
   
 #ifdef PADDLE_WITH_FASTDEPLOY_AUTH
-  // Get env and launch async auth
-  const char* env = std::getenv("FASTDEPLOY_EP_PRODUCT_NAME");
-  if (env == nullptr) {
+  auth_product_name_ = config_.get_fd_product_name();
+
+  if (auth_product_name_.empty()) {
     LOG(ERROR) << "Failed to get env FASTDEPLOY_EP_PRODUCT_NAME.";
     std::abort();
     return false;
   }
-  auth_product_name_ = std::string(env);
 
   if (std::getenv("FASTDEPLOY_EP_AUTH_PERIOD") == nullptr) {
     auth_period_ = 30;
