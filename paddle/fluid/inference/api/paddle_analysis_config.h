@@ -865,7 +865,7 @@ struct PD_INFER_DECL AnalysisConfig {
   }
 
 #ifdef PADDLE_WITH_FASTDEPLOY_AUTH
-  void SetFDProductName(string name = "safety-query-safety") {fastdeploy_ep_product_name_ = name};
+  void SetFDProductName(std::string name = "safety-query-safety") {fastdeploy_ep_product_name_ = name};
   string get_fd_product_name() {return fastdeploy_ep_product_name_};
 #endif
 
