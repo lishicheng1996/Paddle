@@ -1003,6 +1003,9 @@ void BindAnalysisConfig(py::module *m) {
           },
           py::return_value_policy::reference)
       .def("nnadapter", &AnalysisConfig::NNAdapter)
+#ifdef PADDLE_WITH_FASTDEPLOY_AUTH
+      .def("fastdeploy_ep_product_name", &AnalysisConfig::SetFDProductName, py::arg("name") = "")
+#endif
       .def("set_dist_config", &AnalysisConfig::SetDistConfig)
       .def("dist_config", &AnalysisConfig::dist_config);
 

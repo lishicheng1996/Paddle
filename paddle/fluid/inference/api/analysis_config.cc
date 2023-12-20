@@ -575,6 +575,10 @@ AnalysisConfig::AnalysisConfig(const AnalysisConfig &other) {
   CP_MEMBER(apply_optim_);
   CP_MEMBER(skip_load_params_);
 
+#ifdef PADDLE_WITH_FASTDEPLOY_AUTH
+  CP_MEMBER(fastdeploy_ep_product_name_);
+#endif  
+
   if (use_gpu_) {
     PADDLE_ENFORCE_EQ(use_xpu_,
                       false,

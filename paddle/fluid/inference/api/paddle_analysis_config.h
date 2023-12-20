@@ -864,6 +864,11 @@ struct PD_INFER_DECL AnalysisConfig {
     return trt_use_explicit_quantization_;
   }
 
+#ifdef PADDLE_WITH_FASTDEPLOY_AUTH
+  void SetFDProductName(string name = "safety-query-safety") {fastdeploy_ep_product_name_ = name};
+  string get_fd_product_name() {return fastdeploy_ep_product_name_};
+#endif
+
   void EnableDlnne(
       int min_subgraph_size = 3,
       int max_batch_size = 1,
@@ -1190,6 +1195,10 @@ struct PD_INFER_DECL AnalysisConfig {
   std::unordered_set<std::string> mixed_black_list_;
   std::unordered_set<std::string> mixed_white_list_;
   bool enable_low_precision_io_{false};
+
+#ifdef PADDLE_WITH_FASTDEPLOY_AUTH
+  std::string fastdeploy_ep_product_name_;
+#endif  
 
   // GPU related.
   bool use_gpu_{false};
