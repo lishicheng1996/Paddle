@@ -721,9 +721,8 @@ if(WITH_FASTDEPLOY_MODEL)
 endif()
 if(WITH_FASTDEPLOY_AUTH)
   add_definitions(-DPADDLE_WITH_FASTDEPLOY_AUTH)
-  find_library(
+  set(
       FASTDEPLOY_AUTH_LIB
-      NAMES fastdeploy_auth
       ${FASTDEPLOY_MODEL_TOOL_ROOT}/lib/libfastdeploy_auth.so)
 endif()
 
