@@ -364,7 +364,7 @@ bool AnalysisPredictor::Init(
   auth_product_name_ = config_.get_fd_product_name();
 
   if (auth_product_name_.empty()) {
-    LOG(ERROR) << "Failed to get env FASTDEPLOY_EP_PRODUCT_NAME.";
+    LOG(ERROR) << "Failed to get FASTDEPLOY_EP_PRODUCT_NAME.";
     std::abort();
     return false;
   }
